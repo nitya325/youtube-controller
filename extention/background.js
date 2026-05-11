@@ -1,6 +1,6 @@
 console.log("background.js is running!")
 import io from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js"
-const socket = io("http://localhost:5000", {
+const socket = io("https://youtube-controller.onrender.com", {
     transports: ["websocket"],
     reconnection: true,
     reconnectionAttempts: Infinity,
