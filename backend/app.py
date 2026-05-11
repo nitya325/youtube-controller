@@ -4,7 +4,7 @@ from flask_cors import CORS
 from database import init_db, add_to_blocklist, remove_from_blocklist, get_blocklist, add_watch_history, get_watch_history, set_time_limit, get_time_limit
 
 app=Flask(__name__)
-socketio=SocketIO(app, cors_allowed_origins="*", async_mode="threading")
+socketio=SocketIO(app, cors_allowed_origins="*", async_mode="gevent")
 CORS(app)
 
 init_db()
