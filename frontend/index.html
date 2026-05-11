@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Controller</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>🎮 YouTube Controller</h1>
+    <p class="status" id="status">⚫ Disconnected</p>
+<div class="section">
+    <h2>▶️ Playback</h2>
+    <button onclick="sendCommand('pause')">⏸ Pause</button>
+    <button onclick="sendCommand('play')">▶️ Play</button>
+</div>
+
+<div class="section">
+    <h2>🔊 Volume</h2>
+    <button onclick="sendCommand('mute')">🔇 Mute</button>
+    <button onclick="sendCommand('unmute')">🔊 Unmute</button>
+    <button onclick="sendCommand('volume_up')">🔼 Vol Up</button>
+    <button onclick="sendCommand('volume_down')">🔽 Vol Down</button>
+</div>
+<div class="section">
+    <h2>🔒 Lock</h2>
+    <button onclick="sendCommand('lock_youtube')">🔒 Lock YouTube</button>
+    <button onclick="sendCommand('unlock_youtube')">🔓 Unlock YouTube</button>
+</div>
+<div class="section">
+    <h2>🚫 Block Channel</h2>
+    <input type="text" id="channelInput" placeholder="Enter channel name">
+    <button onclick="blockChannel()">🚫 Block</button>
+    <button onclick="unblockChannel()">✅ Unblock</button>
+</div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

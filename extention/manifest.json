@@ -1,0 +1,26 @@
+{
+    "manifest_version":3,
+    "name":"Youtube Controller",
+    "version":"1.0",
+    "description":"Control Youtube Remotly",
+    "permissions":[
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    "host_permissions": [
+    "https://www.youtube.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+    ],
+    "content_scripts":[
+        {
+            "matches":["https://www.youtube.com/*"],
+            "js":["content.js"]
+        }
+    ],
+    "background":{
+        "service_worker":"background.js",
+        "type":"module"
+    }
+}
