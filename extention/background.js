@@ -31,3 +31,9 @@ socket.on("connect_error", function(error){
 socket.on("disconnect", function(){
     console.log("Disconnected from server!")
 })
+
+chrome.runtime.onMessage.addListener(function(message){
+    if(message.type === "video_status"){
+        socket.emit("video_status", message.data)
+    }
+})

@@ -16,6 +16,19 @@ function lockScreen(){
     document.body.appendChild(overlay)
 }
 
+function getVideoStatus(){
+    const video = getVideo()
+    const title = document.querySelector("h1.ytd-watch-metadata yt-formatted-string")
+    const channel = document.querySelector("#channel-name a")
+    
+    return {
+        title: title ? title.textContent.trim() : "Unknown",
+        channel: channel ? channel.textContent.trim() : "Unknown",
+        isPlaying: video ? !video.paused : false,
+        currentTime: video ? Math.floor(video.currentTime) : 0
+    }
+}
+
 chrome.runtime.onMessage.addListener(function(message){
     const video = getVideo()
     
@@ -59,3 +72,11 @@ chrome.runtime.onMessage.addListener(function(message){
         if(video) video.play()
     }
 })
+
+setInterval(function(){
+    const status = getVideoStatus()
+    chrome.runtime.sendMessage({
+        type: "video_status",
+        data: status
+    })
+}, 5000)
