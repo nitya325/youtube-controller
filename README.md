@@ -243,6 +243,11 @@ youtube-controller/
 
 > <img width="1042" height="860" alt="image" src="https://github.com/user-attachments/assets/391a2853-251d-49c9-afdf-5513b56ed6a4" />
 
+## Updated features
+
+<img width="716" height="123" alt="Screenshot 2026-07-19 155145" src="https://github.com/user-attachments/assets/7c20d8d0-bf4b-4850-8101-a3facc615d33" />
+
+<img width="713" height="411" alt="Screenshot 2026-07-19 155555" src="https://github.com/user-attachments/assets/20001082-68bc-40a5-b852-177e2a211d91" />
 
 ---
 
