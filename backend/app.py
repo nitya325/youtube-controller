@@ -92,6 +92,17 @@ def handle_block_channel(data):
     add_to_blocklist(data["channel_name"])
     socketio.emit("command", {"action": "block_channel", "channel_name": data["channel_name"]})
 
+@socketio.on("sync_blocklist")
+def handle_sync_blocklist(data):
+    channels = data.get("channels", [])
+    from database import get_db
+    conn = get_db()
+    conn.execute("DELETE FROM block_list")
+    for name in channels:
+        conn.execute("INSERT OR IGNORE INTO block_list (channel_name) VALUES (?)", [name])
+    conn.commit()
+    conn.close()
+
 @socketio.on("unblock_channel")
 def handle_unblock_channel(data):
     print("Channel unblocked successfully!")

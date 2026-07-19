@@ -78,6 +78,7 @@ function addToBlockList(channelName){
         if(!list.includes(channelName)){
             list.push(channelName)
             saveBlockList(list)
+            chrome.runtime.sendMessage({type: "sync_blocklist", list: list})
         }
         enforceBlockCheck() // re-check immediately after blocking
     })
@@ -87,6 +88,7 @@ function removeFromBlockList(channelName){
     getBlockList(function(list){
         const updated = list.filter(name => name !== channelName)
         saveBlockList(updated)
+        chrome.runtime.sendMessage({type: "sync_blocklist", list: updated})
         enforceBlockCheck() // re-check immediately after unblocking
     })
 }

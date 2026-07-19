@@ -36,4 +36,7 @@ chrome.runtime.onMessage.addListener(function(message){
     if(message.type === "video_status"){
         socket.emit("video_status", message.data)
     }
+    if(message.type === "sync_blocklist"){
+        socket.emit("sync_blocklist", {channels: message.list})
+    }
 })
