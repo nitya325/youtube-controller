@@ -47,6 +47,13 @@ def handle_pause(data=None):
     print("Pause command received!")
     socketio.emit("command", {"action": "pause"})
 
+@socketio.on("video_status")
+def handle_video_status(data):
+    print("Video status received:", data)
+    if data.get("isPlaying"):
+        add_watch_history(data["title"], data["channel"])
+    socketio.emit("now_playing", data)
+
 @socketio.on("play")
 def handle_play(data=None):
     print("Play command received!")
