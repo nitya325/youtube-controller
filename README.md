@@ -174,6 +174,7 @@ The objective of this project is to provide a lightweight remote-control and con
 - Manifest V3
 - Background Service Worker
 - Content Scripts
+- chrome.storage.local
 - Chrome Tabs API
 - Chrome Messaging API
 
@@ -357,10 +358,10 @@ During development, several technical challenges were encountered:
 
 - Establishing stable real-time communication between the web application and the Chrome Extension.
 - Managing communication across the frontend, backend, and browser extension.
-- Synchronizing YouTube playback events in real time.
-- Handling multiple YouTube tabs efficiently.
-- Deploying a Socket.IO-based Flask application on Render.
-- Designing a scalable event-driven architecture.
+- Channel blocking wasn't persistent.
+- Dashboard/extension state going out of sync.
+- Duplicate watch history entries.
+- Silent storage failures. 
 
 These challenges helped strengthen my understanding of full-stack development, browser extension APIs, and real-time systems.
 
