@@ -28,8 +28,19 @@ function blockScreen(channelName){
     overlay.style.height="100%"
     overlay.style.backgroundColor="rgb(0, 0, 0)"
     overlay.style.zIndex="999999"
-    overlay.innerHTML=`<h1 style='color:white; text-align:center; margin-top:40vh;'>This channel is blocked: ${channelName}</h1>`
+    overlay.style.display="flex"
+    overlay.style.flexDirection="column"
+    overlay.style.alignItems="center"
+    overlay.style.justifyContent="center"
+    overlay.innerHTML=`
+        <h1 style='color:white; text-align:center;'>This channel is blocked: ${channelName}</h1>
+        <button id="yt-block-home-btn" style="margin-top:20px; padding:12px 24px; font-size:16px; cursor:pointer; border:none; border-radius:6px; background:#ff0000; color:white;">Go to YouTube Home</button>
+    `
     document.body.appendChild(overlay)
+
+    document.getElementById("yt-block-home-btn").addEventListener("click", function(){
+        window.location.href = "https://www.youtube.com/"
+    })
 }
 
 function removeBlockScreen(){

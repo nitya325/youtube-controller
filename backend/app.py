@@ -47,11 +47,13 @@ def handle_pause(data=None):
     print("Pause command received!")
     socketio.emit("command", {"action": "pause"})
 
+last_logged = {"title": None}
+
 @socketio.on("video_status")
 def handle_video_status(data):
-    print("Video status received:", data)
-    if data.get("isPlaying"):
+    if data.get("isPlaying") and data.get("title") != last_logged["title"]:
         add_watch_history(data["title"], data["channel"])
+        last_logged["title"] = data["title"]
     socketio.emit("now_playing", data)
 
 @socketio.on("play")
