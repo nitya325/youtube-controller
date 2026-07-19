@@ -50,6 +50,13 @@ def add_watch_history(video_title, channel_name):
                  [video_title, channel_name])
     conn.commit()
     conn.close()
+
+def clear_watch_history():
+    conn = get_db()
+    conn.execute("DELETE FROM watch_history")
+    conn.commit()
+    conn.close()
+
 def get_watch_history():
     conn = get_db()
     history = conn.execute("SELECT * FROM watch_history ORDER BY watched_at DESC LIMIT 50").fetchall()

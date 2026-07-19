@@ -82,7 +82,7 @@ function loadHistory(){
                 list.innerHTML = "<li style='opacity:0.6;'>No history yet</li>"
                 return
             }
-            history.forEach(function(h){
+            history.slice(0, 10).forEach(function(h){
                 const li = document.createElement("li")
                 li.textContent = h.video_title + " — " + h.channel_name + " (" + h.watched_at + ")"
                 list.appendChild(li)
@@ -93,6 +93,15 @@ function loadHistory(){
         })
 }
 
+function clearHistory(){
+    fetch(SERVER_URL + "/history/clear", {method: "POST"})
+        .then(function(){
+            loadHistory()
+        })
+        .catch(function(err){
+            console.log("Failed to clear history:", err)
+        })
+}
 // ---- Initial load + periodic refresh ----
 
 loadBlockedList()

@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from database import init_db, add_to_blocklist, remove_from_blocklist, get_blocklist, add_watch_history, get_watch_history, set_time_limit, get_time_limit
+from database import init_db, add_to_blocklist, remove_from_blocklist, get_blocklist, add_watch_history, get_watch_history, set_time_limit, get_time_limit, clear_watch_history
 
 app=Flask(__name__)
 socketio=SocketIO(app, cors_allowed_origins="*", async_mode="gevent")
@@ -22,6 +23,11 @@ def get_blocklist_route():
 def get_history_route():
     history = get_watch_history()
     return jsonify([dict(h) for h in history])
+
+@app.route("/history/clear", methods=["POST"])
+def clear_history_route():
+    clear_watch_history()
+    return jsonify({"status": "cleared"})
 
 @app.route("/timelimit")
 def get_timelimit_route():
